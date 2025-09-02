@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  # FreePeak DB MCP Server - Development Environment
+  db-mcp-server-dev:
+    image: freepeak/db-mcp-server:latest
+    container_name: dev-db-mcp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      TRANSPORT_MODE: sse
+      CONFIG_PATH: /app/config.json
+      ENVIRONMENT: development
+    ports:
+      - "9092:9092"
+    volumes:
+      - ./config/mcp-config.json:/app/config.json:ro
+    networks:
+      - mcp-dev-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9092/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  mcp-dev-network:
+    driver: bridge

@@ -1,0 +1,9 @@
+
+# Environment-specific MCP configs (contains sensitive DB info)
+dev/config/mcp-config.json
+live/config/mcp-config.json
+
+# Environment files
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,74 @@
+{
+  "connections": [
+    {
+      "id": "dev_partners_파트너스",
+      "type": "mysql",
+      "host": "YOUR_DEV_DB_HOST",
+      "port": 33063,
+      "name": "usin_parthners",
+      "user": "YOUR_DEV_DB_USER",
+      "password": "YOUR_DEV_DB_PASSWORD",
+      "options": {
+        "charset": "utf8mb4",
+        "timezone": "+09:00"
+      }
+    },
+    {
+      "id": "dev_booking_파트너스부킹",
+      "type": "mysql",
+      "host": "YOUR_DEV_DB_HOST",
+      "port": 33063,
+      "name": "partners_booking",
+      "user": "YOUR_DEV_DB_USER",
+      "password": "YOUR_DEV_DB_PASSWORD",
+      "options": {
+        "charset": "utf8mb4",
+        "timezone": "+09:00"
+      }
+    },
+    {
+      "id": "dev_usin_어신",
+      "type": "mysql",
+      "host": "YOUR_DEV_DB_HOST",
+      "port": 33063,
+      "name": "usin",
+      "user": "YOUR_DEV_DB_USER",
+      "password": "YOUR_DEV_DB_PASSWORD",
+      "options": {
+        "charset": "utf8mb4",
+        "timezone": "+09:00"
+      }
+    },
+    {
+      "id": "dev_subscription_청약몰",
+      "type": "mysql",
+      "host": "YOUR_DEV_DB_HOST",
+      "port": 33063,
+      "name": "usin_subscription",
+      "user": "YOUR_DEV_DB_USER",
+      "password": "YOUR_DEV_DB_PASSWORD",
+      "options": {
+        "charset": "utf8mb4",
+        "timezone": "+09:00"
+      }
+    }
+  ],
+  "server": {
+    "host": "0.0.0.0",
+    "port": 9092,
+    "cors": {
+      "enabled": true,
+      "origins": ["*"]
+    },
+    "logging": {
+      "level": "INFO",
+      "format": "json"
+    }
+  },
+  "security": {
+    "maxConnections": 10,
+    "connectionTimeout": 30000,
+    "queryTimeout": 60000,
+    "maxQuerySize": 1048576
+  }
+}

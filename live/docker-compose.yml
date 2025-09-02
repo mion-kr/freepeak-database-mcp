@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  # FreePeak DB MCP Server - Live/Production Environment
+  db-mcp-server-live:
+    image: freepeak/db-mcp-server:latest
+    container_name: live-db-mcp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      TRANSPORT_MODE: sse
+      CONFIG_PATH: /app/config.json
+      ENVIRONMENT: production
+    ports:
+      - "9093:9093" # 다른 포트 사용으로 dev와 구분
+    volumes:
+      - ./config/mcp-config.json:/app/config.json:ro
+    networks:
+      - mcp-live-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9093/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  mcp-live-network:
+    driver: bridge

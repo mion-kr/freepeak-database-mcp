@@ -1,0 +1,74 @@
+{
+  "connections": [
+    {
+      "id": "live_partners_파트너스",
+      "type": "mysql",
+      "host": "YOUR_LIVE_PARTNERS_DB_HOST",
+      "port": 33063,
+      "name": "usin_parthners",
+      "user": "YOUR_LIVE_PARTNERS_USER",
+      "password": "YOUR_LIVE_PARTNERS_PASSWORD",
+      "options": {
+        "charset": "utf8mb4",
+        "timezone": "+09:00"
+      }
+    },
+    {
+      "id": "live_booking_파트너스부킹",
+      "type": "mysql",
+      "host": "YOUR_LIVE_PARTNERS_DB_HOST",
+      "port": 33063,
+      "name": "partners_booking",
+      "user": "YOUR_LIVE_PARTNERS_USER",
+      "password": "YOUR_LIVE_PARTNERS_PASSWORD",
+      "options": {
+        "charset": "utf8mb4",
+        "timezone": "+09:00"
+      }
+    },
+    {
+      "id": "live_usin_어신",
+      "type": "mysql",
+      "host": "YOUR_LIVE_USIN_DB_HOST",
+      "port": 33063,
+      "name": "usin",
+      "user": "YOUR_LIVE_USIN_USER",
+      "password": "YOUR_LIVE_USIN_PASSWORD",
+      "options": {
+        "charset": "utf8mb4",
+        "timezone": "+09:00"
+      }
+    },
+    {
+      "id": "live_subscription_청약몰",
+      "type": "mysql",
+      "host": "YOUR_LIVE_SUBSCRIPTION_DB_HOST",
+      "port": 33063,
+      "name": "usin_subscription",
+      "user": "YOUR_LIVE_SUBSCRIPTION_USER",
+      "password": "YOUR_LIVE_SUBSCRIPTION_PASSWORD",
+      "options": {
+        "charset": "utf8mb4",
+        "timezone": "+09:00"
+      }
+    }
+  ],
+  "server": {
+    "host": "0.0.0.0",
+    "port": 9093,
+    "cors": {
+      "enabled": true,
+      "origins": ["https://your-production-domain.com"]
+    },
+    "logging": {
+      "level": "WARN",
+      "format": "json"
+    }
+  },
+  "security": {
+    "maxConnections": 5,
+    "connectionTimeout": 30000,
+    "queryTimeout": 30000,
+    "maxQuerySize": 524288
+  }
+}
