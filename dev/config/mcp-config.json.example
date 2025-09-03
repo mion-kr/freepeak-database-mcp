@@ -1,11 +1,11 @@
 {
   "connections": [
     {
-      "id": "dev_partners_파트너스",
+      "id": "dev_DB_ID_1",
       "type": "mysql",
       "host": "YOUR_DEV_DB_HOST",
-      "port": 33063,
-      "name": "usin_parthners",
+      "port": YOUR_DEV_DB_PORT,
+      "name": "YOUR_DEV_DB_NAME",
       "user": "YOUR_DEV_DB_USER",
       "password": "YOUR_DEV_DB_PASSWORD",
       "options": {
@@ -14,11 +14,11 @@
       }
     },
     {
-      "id": "dev_booking_파트너스부킹",
+      "id": "dev_DB_ID_2",
       "type": "mysql",
       "host": "YOUR_DEV_DB_HOST",
-      "port": 33063,
-      "name": "partners_booking",
+      "port": YOUR_DEV_DB_PORT,
+      "name": "YOUR_DEV_DB_NAME",
       "user": "YOUR_DEV_DB_USER",
       "password": "YOUR_DEV_DB_PASSWORD",
       "options": {
@@ -26,32 +26,6 @@
         "timezone": "+09:00"
       }
     },
-    {
-      "id": "dev_usin_어신",
-      "type": "mysql",
-      "host": "YOUR_DEV_DB_HOST",
-      "port": 33063,
-      "name": "usin",
-      "user": "YOUR_DEV_DB_USER",
-      "password": "YOUR_DEV_DB_PASSWORD",
-      "options": {
-        "charset": "utf8mb4",
-        "timezone": "+09:00"
-      }
-    },
-    {
-      "id": "dev_subscription_청약몰",
-      "type": "mysql",
-      "host": "YOUR_DEV_DB_HOST",
-      "port": 33063,
-      "name": "usin_subscription",
-      "user": "YOUR_DEV_DB_USER",
-      "password": "YOUR_DEV_DB_PASSWORD",
-      "options": {
-        "charset": "utf8mb4",
-        "timezone": "+09:00"
-      }
-    }
   ],
   "server": {
     "host": "0.0.0.0",
