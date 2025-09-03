@@ -1,4 +1,4 @@
-# Mion Multi-Database MCP Server
+# Multi-Database MCP Server
 
 환경별로 분리된 다중 데이터베이스 MCP(Model Context Protocol) 서버입니다.  
 개발(dev)과 운영(live) 환경을 완전히 분리하여 안전한 데이터베이스 작업을 지원합니다.
@@ -191,20 +191,3 @@ cd dev && docker-compose restart
 # live 환경 재시작
 cd live && docker-compose restart
 ```
-
-## 📋 체크리스트
-
-### Dev 환경 사용시
-
-- [ ] dev 디렉토리에서 실행했는가?
-- [ ] 포트 9092가 사용되고 있는가?
-- [ ] 컨테이너명이 `dev-db-mcp`인가?
-- [ ] Claude Code에서 `database-dev` 서버를 사용하고 있는가?
-
-### Live 환경 사용시
-
-- [ ] live 환경 설정이 완료되었는가?
-- [ ] 실제 운영 DB 접속 정보가 설정되었는가?
-- [ ] 포트 9093이 사용되고 있는가?
-- [ ] 컨테이너명이 `live-db-mcp`인가?
-- [ ] 읽기 전용 쿼리만 실행할 것인가?
