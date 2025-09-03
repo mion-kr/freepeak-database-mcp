@@ -13,8 +13,7 @@ mcp-server/
 │   └── docker-compose.yml        # dev 환경 Docker 구성
 ├── live/                         # 운영 환경
 │   ├── config/
-│   │   ├── mcp-config.json       # live 환경 데이터베이스 설정 (템플릿)
-│   │   └── .env.example          # 환경변수 예제 파일
+│   │   └── mcp-config.json       # live 환경 데이터베이스 설정 (템플릿)
 │   └── docker-compose.yml        # live 환경 Docker 구성
 ├── config/                       # 기존 설정 (레거시)
 │   └── mcp-config.json
@@ -81,22 +80,6 @@ mcp-server/
 **포트:** `9093`  
 **컨테이너명:** `live-db-mcp`
 
-## 🗃️ 데이터베이스 목록
-
-### Dev 환경
-
-- `dev_partners_파트너스` - 파트너스 개발 데이터베이스
-- `dev_booking_파트너스부킹` - 파트너스 부킹 개발 데이터베이스
-- `dev_usin_어신` - 어신 개발 데이터베이스
-- `dev_subscription_청약몰` - 청약몰 개발 데이터베이스
-
-### Live 환경
-
-- `live_partners_파트너스` - 파트너스 운영 데이터베이스
-- `live_booking_파트너스부킹` - 파트너스 부킹 운영 데이터베이스
-- `live_usin_어신` - 어신 운영 데이터베이스
-- `live_subscription_청약몰` - 청약몰 운영 데이터베이스
-
 ## 🔧 Claude Code 연결 설정
 
 ### 개발 환경 연결
@@ -120,7 +103,7 @@ mcp-server/
 {
   "mcpServers": {
     "live-db-server": {
-      "type": "sse", 
+      "type": "sse",
       "url": "http://localhost:9093"
     }
   }
@@ -142,6 +125,16 @@ mcp-server/
 ## ⚠️ 안전 수칙
 
 ### ✅ DO (권장사항)
+
+- **공통 사항**: readOnly 권한만 있는 Database 계정 생성
+
+  ```sql
+  CREATE USER 'mcp_readonly'@'%' IDENTIFIED BY 'YOUR_PASSWORD';
+  GRANT SELECT, SHOW VIEW ON YOUR_DATABASE_1.* TO 'mcp_readonly'@'%';
+  GRANT SELECT, SHOW VIEW ON YOUR_DATABASE_2.* TO 'mcp_readonly'@'%';
+  GRANT SELECT, SHOW VIEW ON YOUR_DATABASE_3.* TO 'mcp_readonly'@'%';
+  FLUSH PRIVILEGES;
+  ```
 
 - **개발 작업시**: dev 환경만 사용
 - **쿼리 실행 전**: 어떤 환경에 연결되어 있는지 반드시 확인
