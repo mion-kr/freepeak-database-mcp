@@ -3,7 +3,9 @@ version: "3.8"
 services:
   # FreePeak DB MCP Server - Development Environment
   db-mcp-server-dev:
-    image: freepeak/db-mcp-server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: dev-db-mcp
     restart: unless-stopped
     stdin_open: true
@@ -12,10 +14,10 @@ services:
       TRANSPORT_MODE: stdio
       CONFIG_PATH: /app/config.json
       ENVIRONMENT: development
+    env_file:
+      - .env
     ports:
       - "9092:9092"
-    volumes:
-      - ./config/mcp-config.json:/app/config.json:ro
     networks:
       - mcp-dev-network
 

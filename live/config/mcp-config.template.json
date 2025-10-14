@@ -1,0 +1,87 @@
+{
+  "connections": [
+    {
+      "id": "live_partners",
+      "type": "mysql",
+      "host": "${LIVE_DB_HOST}",
+      "port": ${LIVE_DB_PORT},
+      "name": "${LIVE_DB_NAME_PARTNERS}",
+      "user": "${LIVE_DB_USER}",
+      "password": "${LIVE_DB_PASSWORD}",
+      "options": {
+        "charset": "${LIVE_DB_CHARSET}",
+        "timezone": "${LIVE_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "live_booking",
+      "type": "mysql",
+      "host": "${LIVE_DB_HOST}",
+      "port": ${LIVE_DB_PORT},
+      "name": "${LIVE_DB_NAME_BOOKING}",
+      "user": "${LIVE_DB_USER}",
+      "password": "${LIVE_DB_PASSWORD}",
+      "options": {
+        "charset": "${LIVE_DB_CHARSET}",
+        "timezone": "${LIVE_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "live_usin",
+      "type": "mysql",
+      "host": "${LIVE_DB_HOST}",
+      "port": ${LIVE_DB_PORT},
+      "name": "${LIVE_DB_NAME_USIN}",
+      "user": "${LIVE_DB_USER}",
+      "password": "${LIVE_DB_PASSWORD}",
+      "options": {
+        "charset": "${LIVE_DB_CHARSET}",
+        "timezone": "${LIVE_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "live_subscription",
+      "type": "mysql",
+      "host": "${LIVE_DB_HOST}",
+      "port": ${LIVE_DB_PORT},
+      "name": "${LIVE_DB_NAME_SUBSCRIPTION}",
+      "user": "${LIVE_DB_USER}",
+      "password": "${LIVE_DB_PASSWORD}",
+      "options": {
+        "charset": "${LIVE_DB_CHARSET}",
+        "timezone": "${LIVE_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "live_mall",
+      "type": "mysql",
+      "host": "${LIVE_DB_HOST}",
+      "port": ${LIVE_DB_PORT},
+      "name": "${LIVE_DB_NAME_MALL}",
+      "user": "${LIVE_DB_USER}",
+      "password": "${LIVE_DB_PASSWORD}",
+      "options": {
+        "charset": "${LIVE_DB_CHARSET}",
+        "timezone": "${LIVE_DB_TIMEZONE}"
+      }
+    }
+  ],
+  "server": {
+    "host": "0.0.0.0",
+    "port": 9093,
+    "cors": {
+      "enabled": true,
+      "origins": ["https://your-production-domain.com"]
+    },
+    "logging": {
+      "level": "WARN",
+      "format": "json"
+    }
+  },
+  "security": {
+    "maxConnections": 5,
+    "connectionTimeout": 30000,
+    "queryTimeout": 30000,
+    "maxQuerySize": 524288
+  }
+}

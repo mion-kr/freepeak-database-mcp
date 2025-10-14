@@ -7,3 +7,5 @@ live/config/mcp-config.json
 .env
 .env.local
 .env.*.local
+dev/.env
+live/.env

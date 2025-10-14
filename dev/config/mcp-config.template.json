@@ -1,0 +1,87 @@
+{
+  "connections": [
+    {
+      "id": "dev_partners",
+      "type": "mysql",
+      "host": "${DEV_DB_HOST}",
+      "port": ${DEV_DB_PORT},
+      "name": "${DEV_DB_NAME_PARTNERS}",
+      "user": "${DEV_DB_USER}",
+      "password": "${DEV_DB_PASSWORD}",
+      "options": {
+        "charset": "${DEV_DB_CHARSET}",
+        "timezone": "${DEV_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "dev_booking",
+      "type": "mysql",
+      "host": "${DEV_DB_HOST}",
+      "port": ${DEV_DB_PORT},
+      "name": "${DEV_DB_NAME_BOOKING}",
+      "user": "${DEV_DB_USER}",
+      "password": "${DEV_DB_PASSWORD}",
+      "options": {
+        "charset": "${DEV_DB_CHARSET}",
+        "timezone": "${DEV_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "dev_usin",
+      "type": "mysql",
+      "host": "${DEV_DB_HOST}",
+      "port": ${DEV_DB_PORT},
+      "name": "${DEV_DB_NAME_USIN}",
+      "user": "${DEV_DB_USER}",
+      "password": "${DEV_DB_PASSWORD}",
+      "options": {
+        "charset": "${DEV_DB_CHARSET}",
+        "timezone": "${DEV_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "dev_subscription",
+      "type": "mysql",
+      "host": "${DEV_DB_HOST}",
+      "port": ${DEV_DB_PORT},
+      "name": "${DEV_DB_NAME_SUBSCRIPTION}",
+      "user": "${DEV_DB_USER}",
+      "password": "${DEV_DB_PASSWORD}",
+      "options": {
+        "charset": "${DEV_DB_CHARSET}",
+        "timezone": "${DEV_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "dev_mall",
+      "type": "mysql",
+      "host": "${DEV_DB_HOST}",
+      "port": ${DEV_DB_PORT},
+      "name": "${DEV_DB_NAME_MALL}",
+      "user": "${DEV_DB_USER}",
+      "password": "${DEV_DB_PASSWORD}",
+      "options": {
+        "charset": "${DEV_DB_CHARSET}",
+        "timezone": "${DEV_DB_TIMEZONE}"
+      }
+    }
+  ],
+  "server": {
+    "host": "0.0.0.0",
+    "port": 9092,
+    "cors": {
+      "enabled": true,
+      "origins": ["*"]
+    },
+    "logging": {
+      "level": "INFO",
+      "format": "json"
+    }
+  },
+  "security": {
+    "maxConnections": 10,
+    "connectionTimeout": 30000,
+    "queryTimeout": 60000,
+    "maxQuerySize": 1048576
+  }
+}
