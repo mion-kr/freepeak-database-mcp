@@ -38,25 +38,6 @@ mcp-server/
    # .env 파일의 값을 실제 DB 정보로 채워 주세요.
    ```
 
-2. **설정 파일 자동 생성**
-
-   `docker-compose up` 명령을 실행하면 컨테이너가 시작되기 전에 엔트리포인트 스크립트(`render-config-entrypoint.sh`)가 `.env` 값을 활용해 `/app/config.json`을 생성합니다.
-
-   > 첫 실행 시 `docker-compose up --build ...`로 이미지를 다시 빌드해 주세요. 코드 변경 후에도 동일하게 `--build` 옵션을 권장합니다.
-
-3. **개발 환경 실행**
-
-   ```bash
-   cd dev
-   docker-compose up --build -d
-
-   # 로그 확인
-   docker-compose logs -f
-   ```
-
-**포트:** `9092`  
-**컨테이너명:** `dev-db-mcp`
-
 ### 🔴 Live 환경 실행
 
 ⚠️ **주의: 운영 환경 설정이 필요합니다**
@@ -124,7 +105,7 @@ mcp-server/
 
 ### ✅ DO (권장사항)
 
-- **공통 사항**: readOnly 권한만 있는 Database 계정 생성
+- **공통 사항**: readOnly 권한만 있는 Database 계정 생성하여 사용합니다. 이미 존재하는 계정이 있다면 해당 계정을 사용해도 무방합니다.
 
   ```sql
   CREATE USER 'mcp_readonly'@'%' IDENTIFIED BY 'YOUR_PASSWORD';
@@ -138,12 +119,6 @@ mcp-server/
 - **쿼리 실행 전**: 어떤 환경에 연결되어 있는지 반드시 확인
 - **운영 환경**: 읽기 전용(SELECT) 쿼리만 실행
 - **각 환경**: 별도의 포트와 컨테이너명으로 구분해서 실행
-
-### ❌ DON'T (금지사항)
-
-- dev와 live 환경을 동시에 실행하지 말 것
-- 운영 환경에서 INSERT/UPDATE/DELETE 쿼리 실행 금지
-- 환경 확인 없이 쿼리 실행 금지
 
 ## 🔍 환경 확인 방법
 
