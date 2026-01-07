@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  # FreePeak DB MCP Server - Office Environment
+  db-mcp-server-office:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: office-db-mcp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      TRANSPORT_MODE: stdio
+      CONFIG_PATH: /app/config.json
+      ENVIRONMENT: office
+      SERVER_PORT: "9094"
+    env_file:
+      - .env
+    ports:
+      - "9094:9094"
+    networks:
+      - mcp-office-network
+
+networks:
+  mcp-office-network:
+    driver: bridge

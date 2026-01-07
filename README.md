@@ -1,7 +1,7 @@
 # Multi-Database MCP Server
 
 환경별로 분리된 다중 데이터베이스 MCP(Model Context Protocol) 서버입니다.  
-개발(dev)과 운영(live) 환경을 완전히 분리하여 안전한 데이터베이스 작업을 지원합니다.
+개발(dev), 사무실(office), 운영(live) 환경을 분리하여 안전한 데이터베이스 작업을 지원합니다.
 
 ## 📁 디렉토리 구조
 
@@ -15,6 +15,14 @@ mcp-server/
 │   │   └── render-config-entrypoint.sh # 컨테이너 엔트리포인트용 스크립트
 │   ├── Dockerfile                # dev 환경용 커스텀 이미지
 │   └── docker-compose.yml        # dev 환경 Docker 구성
+├── office/                       # 사무실 환경
+│   ├── config/
+│   │   ├── mcp-config.template.json  # office 환경 템플릿 (환경 변수 기반)
+│   │   └── mcp-config.json           # office 환경 데이터베이스 설정 (렌더링 결과, 컨테이너가 생성)
+│   ├── scripts/
+│   │   └── render-config-entrypoint.sh # 컨테이너 엔트리포인트용 스크립트
+│   ├── Dockerfile                # office 환경용 커스텀 이미지
+│   └── docker-compose.yml        # office 환경 Docker 구성
 ├── live/                         # 운영 환경
 │   ├── config/
 │   │   ├── mcp-config.template.json  # live 환경 템플릿
@@ -36,7 +44,27 @@ mcp-server/
    cd dev
    cp .env.example .env
    # .env 파일의 값을 실제 DB 정보로 채워 주세요.
+	   ```
+
+### 🏢 Office 환경 실행
+
+1. **환경 변수 준비 (최초 1회)**
+
+   ```bash
+   cd office
+   cp .env.example .env
+   # .env 파일의 값을 실제 DB 정보로 채워 주세요.
    ```
+
+2. **Office 환경 실행**
+
+   ```bash
+   cd office
+   docker-compose up --build -d
+   ```
+
+**포트:** `9094`  
+**컨테이너명:** `office-db-mcp`
 
 ### 🔴 Live 환경 실행
 
@@ -77,6 +105,19 @@ mcp-server/
 }
 ```
 
+### 사무실 환경 연결
+
+```json
+{
+  "mcpServers": {
+    "office-db-server": {
+      "type": "sse",
+      "url": "http://localhost:9094"
+    }
+  }
+}
+```
+
 ### 운영 환경 연결 (신중하게!)
 
 ```json
@@ -97,6 +138,7 @@ mcp-server/
 **운영 환경**은 `.env` 파일을 읽지 않습니다.
 
 - ✅ **개발 환경(dev)**: `dev/.env` → 컨테이너 엔트리포인트(자동 렌더링) → `/app/config.json`
+- ✅ **사무실 환경(office)**: `office/.env` → 컨테이너 엔트리포인트(자동 렌더링) → `/app/config.json`
 - ✅ **운영 환경(live)**: `live/.env` → 컨테이너 엔트리포인트(자동 렌더링) → `/app/config.json`
 
 생성된 `mcp-config.json` 파일들은 `.gitignore`에 포함되어 git에 커밋되지 않습니다.
@@ -115,7 +157,7 @@ mcp-server/
   FLUSH PRIVILEGES;
   ```
 
-- **개발 작업시**: dev 환경만 사용
+- **개발 작업시**: office 환경만 사용
 - **쿼리 실행 전**: 어떤 환경에 연결되어 있는지 반드시 확인
 - **운영 환경**: 읽기 전용(SELECT) 쿼리만 실행
 - **각 환경**: 별도의 포트와 컨테이너명으로 구분해서 실행
@@ -130,6 +172,7 @@ docker ps | grep db-mcp
 
 # 포트로 구분
 # 9092 = dev 환경
+# 9094 = office 환경
 # 9093 = live 환경
 ```
 
@@ -141,6 +184,9 @@ docker ps | grep db-mcp
 # dev 환경 중지
 cd dev && docker-compose down
 
+# office 환경 중지
+cd office && docker-compose down
+
 # live 환경 중지
 cd live && docker-compose down
 ```
@@ -151,6 +197,9 @@ cd live && docker-compose down
 # dev 환경 로그
 cd dev && docker-compose logs -f
 
+# office 환경 로그
+cd office && docker-compose logs -f
+
 # live 환경 로그
 cd live && docker-compose logs -f
 ```
@@ -160,6 +209,9 @@ cd live && docker-compose logs -f
 ```bash
 # dev 환경 재시작
 cd dev && docker-compose restart
+
+# office 환경 재시작
+cd office && docker-compose restart
 
 # live 환경 재시작
 cd live && docker-compose restart

@@ -2,6 +2,7 @@
 # Environment-specific MCP configs (contains sensitive DB info)
 dev/config/mcp-config.json
 live/config/mcp-config.json
+office/config/mcp-config.json
 
 # Environment files
 .env
@@ -9,3 +10,4 @@ live/config/mcp-config.json
 .env.*.local
 dev/.env
 live/.env
+office/.env

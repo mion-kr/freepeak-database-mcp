@@ -1,0 +1,87 @@
+{
+  "connections": [
+    {
+      "id": "office_partners",
+      "type": "mysql",
+      "host": "${OFFICE_DB_HOST}",
+      "port": ${OFFICE_DB_PORT},
+      "name": "${OFFICE_DB_NAME_PARTNERS}",
+      "user": "${OFFICE_DB_USER}",
+      "password": "${OFFICE_DB_PASSWORD}",
+      "options": {
+        "charset": "${OFFICE_DB_CHARSET}",
+        "timezone": "${OFFICE_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "office_booking",
+      "type": "mysql",
+      "host": "${OFFICE_DB_HOST}",
+      "port": ${OFFICE_DB_PORT},
+      "name": "${OFFICE_DB_NAME_BOOKING}",
+      "user": "${OFFICE_DB_USER}",
+      "password": "${OFFICE_DB_PASSWORD}",
+      "options": {
+        "charset": "${OFFICE_DB_CHARSET}",
+        "timezone": "${OFFICE_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "office_usin",
+      "type": "mysql",
+      "host": "${OFFICE_DB_HOST}",
+      "port": ${OFFICE_DB_PORT},
+      "name": "${OFFICE_DB_NAME_USIN}",
+      "user": "${OFFICE_DB_USER}",
+      "password": "${OFFICE_DB_PASSWORD}",
+      "options": {
+        "charset": "${OFFICE_DB_CHARSET}",
+        "timezone": "${OFFICE_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "office_subscription",
+      "type": "mysql",
+      "host": "${OFFICE_DB_HOST}",
+      "port": ${OFFICE_DB_PORT},
+      "name": "${OFFICE_DB_NAME_SUBSCRIPTION}",
+      "user": "${OFFICE_DB_USER}",
+      "password": "${OFFICE_DB_PASSWORD}",
+      "options": {
+        "charset": "${OFFICE_DB_CHARSET}",
+        "timezone": "${OFFICE_DB_TIMEZONE}"
+      }
+    },
+    {
+      "id": "office_mall",
+      "type": "mysql",
+      "host": "${OFFICE_DB_HOST}",
+      "port": ${OFFICE_DB_PORT},
+      "name": "${OFFICE_DB_NAME_MALL}",
+      "user": "${OFFICE_DB_USER}",
+      "password": "${OFFICE_DB_PASSWORD}",
+      "options": {
+        "charset": "${OFFICE_DB_CHARSET}",
+        "timezone": "${OFFICE_DB_TIMEZONE}"
+      }
+    }
+  ],
+  "server": {
+    "host": "0.0.0.0",
+    "port": 9094,
+    "cors": {
+      "enabled": true,
+      "origins": ["*"]
+    },
+    "logging": {
+      "level": "INFO",
+      "format": "json"
+    }
+  },
+  "security": {
+    "maxConnections": 10,
+    "connectionTimeout": 30000,
+    "queryTimeout": 60000,
+    "maxQuerySize": 1048576
+  }
+}
