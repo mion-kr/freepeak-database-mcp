@@ -92,7 +92,15 @@ mcp-server/
 
 ### 개발 환경 연결
 
-`.claude.json`에 dev 서버 추가:
+`~/.codex/config.toml`에 dev 서버 추가 (권장):
+
+```toml
+[mcp_servers.dev-db-server]
+command = "npx"
+args = [ "-y", "mcp-remote", "http://localhost:9092" ]
+```
+
+또는 `.claude.json`에 dev 서버 추가:
 
 ```json
 {
